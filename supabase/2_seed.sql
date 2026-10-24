@@ -80,6 +80,26 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
             {
               "src": "/images/ecolink-resident-reports.webp",
               "alt": "ECOLINK all reports summary on mobile"
+            },
+            {
+              "src": "/images/ecolink-resident-news.webp",
+              "alt": "ECOLINK resident dashboard with the latest barangay news"
+            },
+            {
+              "src": "/images/ecolink-resident-location.webp",
+              "alt": "ECOLINK report step showing the resident's detected location on a map"
+            },
+            {
+              "src": "/images/ecolink-resident-submit.webp",
+              "alt": "ECOLINK report summary before sending it to Barangay Santo Cristo"
+            },
+            {
+              "src": "/images/ecolink-resident-geofence.webp",
+              "alt": "ECOLINK warning that the resident is outside Barangay Santo Cristo"
+            },
+            {
+              "src": "/images/ecolink-resident-documents.webp",
+              "alt": "ECOLINK barangay document request form on mobile"
             }
           ]
         },
@@ -91,6 +111,14 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
             {
               "src": "/images/ecolink-admin-map.webp",
               "alt": "ECOLINK admin report map of Barangay Santo Cristo"
+            },
+            {
+              "src": "/images/ecolink-admin-reports.webp",
+              "alt": "ECOLINK admin list of all reports with filters and status badges"
+            },
+            {
+              "src": "/images/ecolink-admin-report-detail.webp",
+              "alt": "ECOLINK admin report details with a flagged photo and assigned department"
             }
           ]
         }
@@ -219,6 +247,18 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
         {
           "src": "/images/pkmkpi-guide.webp",
           "alt": "PKMKPI disability guide page"
+        },
+        {
+          "src": "/images/pkmkpi-team.webp",
+          "alt": "PKMKPI team page with developer profile cards"
+        },
+        {
+          "src": "/images/pkmkpi-support.webp",
+          "alt": "PKMKPI support page with membership and volunteer options"
+        },
+        {
+          "src": "/images/pkmkpi-contact.webp",
+          "alt": "PKMKPI contact page with national office details and message form"
         }
       ]
     }
