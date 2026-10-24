@@ -1,0 +1,24 @@
+{
+  "name": "renzo-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio of Renzo Mingan, backend developer. Plain HTML + Tailwind CSS, Node.js API on Vercel, Supabase database.",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./public/css/output.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./public/css/output.css --watch",
+    "preview": "serve public",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "nodemailer": "^6.9.15"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4",
+    "tailwindcss": "3.4.17"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

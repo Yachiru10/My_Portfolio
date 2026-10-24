@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Colors =====
+   Light mode values are on :root.
+   Dark mode values are on .dark (the class on <html>). */
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface2: #eef0f7;
+  --line: #dde0ec;
+  --ink: #0f1222;
+  --muted: #4b5068;
+  --accent: #4338ca;
+  --danger: #b91c1c;
+  --nav: rgba(246, 247, 251, 0.86);
+  --glow: rgba(99, 102, 241, 0.22);
+  --chip-border: rgba(67, 56, 202, 0.3);
+  --chip-bg: rgba(99, 102, 241, 0.07);
+  --grad: linear-gradient(90deg, #4f46e5, #6366f1);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0a0b14;
+  --surface: #11131f;
+  --surface2: #181b2a;
+  --line: #242840;
+  --ink: #f3f4fa;
+  --muted: #a3a8c3;
+  --accent: #818cf8;
+  --danger: #fca5a5;
+  --nav: rgba(10, 11, 20, 0.8);
+  --glow: rgba(99, 102, 241, 0.45);
+  --chip-border: rgba(129, 140, 248, 0.4);
+  --chip-bg: rgba(129, 140, 248, 0.09);
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+}
+
+/* ===== Reusable pieces =====
+   Each class below is a group of Tailwind classes with one short name. */
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-site px-6;
+  }
+
+  /* The soft indigo light in the top-right corner.
+     It stays inside the screen, so phones never scroll sideways. */
+  .glow-corner {
+    @apply pointer-events-none absolute right-0 top-0 h-[820px] w-full max-w-[900px];
+    background: radial-gradient(circle at 92% 4%, var(--glow) 0%, transparent 58%);
+  }
+
+  .nav-link {
+    @apply text-sm font-bold tracking-wider transition-colors hover:text-accent;
+  }
+  .nav-link[aria-current='page'] {
+    @apply text-accent;
+  }
+
+  .btn-primary {
+    @apply inline-flex h-14 items-center gap-3 rounded-full px-9 text-[15px] font-extrabold tracking-widest text-white transition;
+    background: var(--grad);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 34px var(--glow);
+  }
+  .btn-small {
+    @apply h-11 px-6 text-sm tracking-wider;
+  }
+
+  .btn-ghost {
+    @apply inline-flex h-14 items-center gap-2.5 rounded-full border border-line bg-surface px-8 text-[15px] font-extrabold tracking-widest transition-colors;
+  }
+  .btn-ghost:hover {
+    border-color: var(--chip-border);
+  }
+
+  .icon-btn {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface transition-colors hover:text-accent;
+  }
+
+  .pill-link {
+    @apply inline-flex h-10 items-center gap-2.5 rounded-full border border-transparent bg-surface2 px-[18px] text-[13px] font-bold tracking-widest transition-colors;
+  }
+  .pill-link:hover {
+    border-color: var(--chip-border);
+  }
+
+  .chip {
+    @apply rounded-full border px-[11px] py-[5px] text-[11px] font-extrabold tracking-wider text-accent;
+    border-color: var(--chip-border);
+    background: var(--chip-bg);
+  }
+  .chip-plain {
+    @apply rounded-full bg-surface2 px-[11px] py-[5px] text-[11px] font-extrabold tracking-wider text-muted;
+  }
+  .tag {
+    @apply rounded-md bg-surface2 px-2.5 py-[5px] text-[11.5px] font-bold tracking-wide text-muted;
+  }
+  .skill {
+    @apply rounded-lg bg-surface2 px-3 py-[7px] text-[13px] font-semibold;
+  }
+
+  .card {
+    @apply rounded-[20px] border border-line bg-surface;
+  }
+
+  .project-card {
+    @apply flex flex-col overflow-hidden rounded-[22px] border border-line bg-surface text-left transition duration-200;
+  }
+  .project-card:hover {
+    border-color: var(--chip-border);
+    transform: translateY(-4px);
+  }
+  .project-card .overlay {
+    @apply absolute inset-0 flex items-center justify-center gap-2.5 bg-black/60 text-[15px] font-extrabold tracking-widest text-white opacity-0 transition-opacity;
+  }
+  .project-card:hover .overlay,
+  .project-card:focus-visible .overlay {
+    @apply opacity-100;
+  }
+
+  .section-title {
+    @apply m-0 font-display text-[clamp(42px,6.2vw,84px)] font-bold leading-[0.95] tracking-[-0.03em];
+  }
+  .small-label {
+    @apply text-[13px] font-extrabold tracking-[0.12em] text-accent;
+  }
+
+  /* Filter buttons on Works and the tabs inside the popup */
+  .filter-btn,
+  .tab-btn {
+    @apply inline-flex h-11 items-center gap-2 rounded-full border border-line bg-surface px-5 text-[13px] font-extrabold tracking-widest text-muted transition-colors hover:text-ink;
+  }
+  .filter-btn[aria-pressed='true'],
+  .tab-btn[aria-selected='true'] {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--chip-bg);
+  }
+
+  .field-label {
+    @apply text-[13px] font-extrabold tracking-wider;
+  }
+  .field-input {
+    @apply w-full rounded-[14px] border border-line bg-bg px-4 text-[15px] text-ink outline-none transition;
+  }
+  .field-input::placeholder {
+    @apply text-muted opacity-75;
+  }
+  .field-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--chip-bg);
+  }
+  .field-input[aria-invalid='true'] {
+    border-color: var(--danger);
+  }
+}
+
+/* Experience cards on the About page use <details>. Turn the arrow when open. */
+details[open] .chevron {
+  transform: rotate(180deg);
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Blinking cursor after the typing text */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+/* Respect people who turn off animations in their device settings */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
