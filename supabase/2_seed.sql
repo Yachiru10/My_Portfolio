@@ -23,18 +23,18 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
       "NODE.JS",
       "EXPRESS",
       "MYSQL",
-      "DOCKER",
-      "CLOUD RUN"
+      "LEAFLET",
+      "RENDER"
     ],
     "card_image": "/images/ecolink-admin-map.webp",
     "card_phone_image": "/images/ecolink-resident-home.webp",
     "overview": "ECOLINK is a reporting system for Barangay Santo Cristo. Residents report community problems with a live photo and an exact map location. Barangay staff sort and resolve reports from one queue under deadlines, and residents get updates by SMS. I designed, built and deployed the whole system while my 3 groupmates wrote the capstone paper.",
     "features": [
       "Role-based access for 5 roles, checked on every request",
-      "A deadline on every report, with a background job every 5 minutes",
-      "4 layers against fake reports: OTP with ID approval, camera-only photos, a geofence and account blocking",
+      "A deadline on every report, with a job every 5 minutes that escalates, cancels or warns on late ones",
+      "4 layers against fake reports: SMS OTP with ID approval, camera-only photos with a date check, a geofence and account blocking",
       "Automatic routing of reports to barangay departments",
-      "Online requests for 6 barangay documents with reference numbers",
+      "Online requests for 6 barangay documents with reference numbers, status tracking and an audit log",
       "Real-time admin alerts and SMS status updates"
     ],
     "decisions": [
@@ -49,21 +49,24 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
       {
         "q": "Disable categories instead of deleting them",
         "a": "Old reports keep their original labels, so the records stay accurate."
+      },
+      {
+        "q": "Move from Google Cloud to free hosting",
+        "a": "I first deployed with Docker on Google Cloud Run. When the free trial ended, I moved the database to Aiven MySQL, the photos to Supabase Storage and the app to Render, updated the saved photo links, and set up regular database backups."
       }
     ],
     "highlight": null,
     "tech": [
       "Node.js",
       "Express.js",
-      "MySQL",
-      "Google Cloud SQL",
+      "MySQL (Aiven)",
       "JWT",
+      "bcrypt",
       "Leaflet",
-      "Docker",
-      "Google Cloud Run",
-      "Cloud Storage"
+      "Supabase Storage",
+      "Render"
     ],
-    "live_url": "https://ecolink-238164787849.asia-southeast1.run.app/",
+    "live_url": "https://ecolink-unha.onrender.com/",
     "live_label": "LIVE SITE",
     "note": null,
     "gallery": {
@@ -149,6 +152,7 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
     "features": [
       "Firestore data model for buyers, sellers and admins",
       "Security rules so users can only change their own data",
+      "Sign-up and login with Firebase Auth, plus an admin panel that creates seller accounts and changes roles",
       "Order workflow with stock checks and seller status updates",
       "IndexedDB cache and HTTP caching rules for faster loading"
     ],
@@ -213,14 +217,14 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
     ],
     "card_image": "/images/pkmkpi-home.webp",
     "card_phone_image": null,
-    "overview": "PKMKPI is the national federation of persons with disabilities in the Philippines. Our volunteer team of 9 built its website. Each frontend developer built a full version, and the project lead combined the best parts into the live portal.",
+    "overview": "PKMKPI is the national federation of persons with disabilities in the Philippines. Our volunteer team of 9 built its website. I built a full eight-page version, and it was one of five versions the project lead combined into the live portal.",
     "features": [
-      "Responsive pages in plain HTML and CSS, with no framework",
+      "8 responsive pages in plain HTML and CSS, with no framework",
       "Regions directory with island group filters, and the Disability Guide",
       "Shared header, navigation and footer used on every page",
       "WCAG contrast checks for visitors with low vision",
       "Keyboard navigation, skip links and ARIA labels",
-      "Prototype accessibility panel with an Alt+A shortcut"
+      "Prototype accessibility panel (Alt+A) with text resizing, high contrast, a dyslexia-friendly mode and text-to-speech"
     ],
     "decisions": null,
     "highlight": null,
@@ -259,6 +263,91 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
         {
           "src": "/images/pkmkpi-contact.webp",
           "alt": "PKMKPI contact page with national office details and message form"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "portfolio",
+    "title": "THIS PORTFOLIO",
+    "category": "backend",
+    "sort_order": 4,
+    "chips": [
+      "PERSONAL",
+      "FULL-STACK"
+    ],
+    "year": "2026",
+    "role": "Designer & Developer",
+    "card_summary": "The site you are on. Plain HTML and Tailwind CSS, with a Node.js API that reads projects and saves contact messages in Supabase.",
+    "card_tags": [
+      "NODE.JS",
+      "SUPABASE",
+      "TAILWIND",
+      "VERCEL"
+    ],
+    "card_image": "/images/portfolio-home.webp",
+    "card_phone_image": null,
+    "overview": "My personal portfolio. The pages are plain HTML, Tailwind CSS and JavaScript with no framework. Behind them is a small Node.js API on Vercel that loads the projects from a Supabase database and handles the contact form.",
+    "features": [
+      "2 API routes on Vercel Functions: GET /api/projects and POST /api/contact",
+      "Projects load from Supabase, with a local JSON copy if the API cannot be reached",
+      "Contact form checked again on the server, with a hidden spam field and a limit of 3 messages per email every 10 minutes",
+      "Messages saved in Supabase and emailed to me with Nodemailer",
+      "Row Level Security on both tables, so only the server can read or write",
+      "Dark and light themes, a project popup with arrow-key slides, and links that open a project directly"
+    ],
+    "decisions": [
+      {
+        "q": "Keep the database away from the browser",
+        "a": "Both tables have Row Level Security with no public rules. Only the Node.js API, using the secret service key, can reach them."
+      },
+      {
+        "q": "Save the message before sending the email",
+        "a": "If Gmail fails, the message is still saved and the visitor does not see an error."
+      },
+      {
+        "q": "Cache the projects list for 5 minutes",
+        "a": "Vercel's CDN keeps a copy, so Supabase is not asked on every visit."
+      }
+    ],
+    "highlight": null,
+    "tech": [
+      "HTML",
+      "Tailwind CSS",
+      "JavaScript",
+      "Node.js",
+      "Vercel Functions",
+      "Supabase (PostgreSQL)",
+      "Nodemailer"
+    ],
+    "live_url": "https://github.com/Yachiru10/My_Portfolio",
+    "live_label": "SOURCE CODE",
+    "note": null,
+    "gallery": {
+      "images": [
+        {
+          "src": "/images/portfolio-home.webp",
+          "alt": "Portfolio home page with name, CV button and quick facts"
+        },
+        {
+          "src": "/images/portfolio-works.webp",
+          "alt": "Portfolio works page with project cards and filters"
+        },
+        {
+          "src": "/images/portfolio-popup.webp",
+          "alt": "Portfolio project popup with screenshots, features and tech"
+        },
+        {
+          "src": "/images/portfolio-about.webp",
+          "alt": "Portfolio about page with tech stack"
+        },
+        {
+          "src": "/images/portfolio-contact.webp",
+          "alt": "Portfolio contact form"
+        },
+        {
+          "src": "/images/portfolio-light.webp",
+          "alt": "Portfolio home page in light theme"
         }
       ]
     }
