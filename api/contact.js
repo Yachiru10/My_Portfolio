@@ -64,13 +64,14 @@ export default async function handler(req, res) {
 
     // Rate limit: count recent messages from the same email
     const since = new Date(Date.now() - WINDOW_MINUTES * 60 * 1000).toISOString();
-    const { count, error: countError } = await supabase
+    const { count, error: countError, status: countStatus } = await supabase
       .from('messages')
       .select('id', { count: 'exact', head: true })
       .eq('email', data.email)
       .gte('created_at', since);
 
-    if (countError) throw countError;
+    // A "head" request has no body, so Supabase errors here come with an empty message. Keep the HTTP status.
+    if (countError) throw { ...countError, status: countStatus };
     if (count >= LIMIT) {
       return res.status(429).json({ error: 'You sent a few messages already. Please wait a few minutes and try again.' });
     }
