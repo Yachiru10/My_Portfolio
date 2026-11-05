@@ -351,6 +351,66 @@ select * from jsonb_populate_recordset(null::public.projects, $json$
         }
       ]
     }
+  },
+  {
+    "slug": "explore-brazil",
+    "title": "EXPLORE BRAZIL",
+    "category": "frontend",
+    "sort_order": 5,
+    "chips": [
+      "SCHOOL ACTIVITY",
+      "FRONTEND"
+    ],
+    "year": "2025",
+    "role": "Solo Developer",
+    "card_summary": "A responsive one-page travel brochure for Brazil, with destinations, hotels, a short travel story and a review slider.",
+    "card_tags": [
+      "HTML5",
+      "CSS3",
+      "JAVASCRIPT",
+      "SWIPER.JS"
+    ],
+    "card_image": "/images/brazil-home.webp",
+    "card_phone_image": null,
+    "overview": "Explore Brazil is a one-page travel brochure I made alone for a web development class. It shows popular destinations, recommended hotels and restaurants, a short travel story and traveler reviews. It is plain HTML, CSS and JavaScript with no framework, hosted on Netlify.",
+    "features": [
+      "Responsive layout with CSS Grid, Flexbox and breakpoints at 540px, 768px and 1200px",
+      "Mobile menu that opens and closes, written in plain JavaScript",
+      "9 destination cards with photos, locations and ratings",
+      "Sections and cards that fade in while scrolling, using ScrollReveal",
+      "Looping review slider using Swiper.js",
+      "Smooth scrolling between sections, and CSS variables for colors and sizes"
+    ],
+    "decisions": null,
+    "highlight": null,
+    "tech": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "ScrollReveal",
+      "Swiper.js",
+      "Remix Icon",
+      "Netlify"
+    ],
+    "live_url": "https://brazilbrochure.netlify.app/",
+    "live_label": "LIVE SITE",
+    "note": null,
+    "gallery": {
+      "images": [
+        {
+          "src": "/images/brazil-home.webp",
+          "alt": "Explore Brazil hero banner of Rio de Janeiro with the tagline The Heart of South America"
+        },
+        {
+          "src": "/images/brazil-destinations.webp",
+          "alt": "Explore Brazil popular destination cards with photos and ratings"
+        },
+        {
+          "src": "/images/brazil-story.webp",
+          "alt": "Explore Brazil travel story section, A Bird's Eye View"
+        }
+      ]
+    }
   }
 ]
 $json$::jsonb);
