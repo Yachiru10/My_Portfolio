@@ -4,7 +4,7 @@
 
 /* ===== Colors =====
    Light mode values are on :root.
-   Dark mode values are on .dark (the class on <html>). */
+   Dark mode values are on .dark */
 :root {
   --bg: #f6f7fb;
   --surface: #ffffff;
@@ -49,15 +49,13 @@
   }
 }
 
-/* ===== Reusable pieces =====
-   Each class below is a group of Tailwind classes with one short name. */
+/* ===== Reusable pieces ===== */
 @layer components {
   .container-site {
     @apply mx-auto w-full max-w-site px-6;
   }
 
-  /* The soft indigo light in the top-right corner.
-     It stays inside the screen, so phones never scroll sideways. */
+  /* The soft indigo light in the top-right corner. */
   .glow-corner {
     @apply pointer-events-none absolute right-0 top-0 h-[820px] w-full max-w-[900px];
     background: radial-gradient(circle at 92% 4%, var(--glow) 0%, transparent 58%);
@@ -198,3 +196,12 @@ details summary::-webkit-details-marker {
     transition: none !important;
   }
 }
+
+.cv-wrap{position:relative;margin-top:.75rem}
+.cv-note{position:absolute;left:50%;top:calc(100% + .75rem);display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;border-radius:.75rem;border:1px solid #9bd6de;background:#e1f5f8;color:#0b4a55;padding:.625rem 1rem;font-size:14px;font-weight:600;transform:translateX(-50%)}
+.cv-note[hidden]{display:none}
+.cv-note svg{width:18px;height:18px;flex-shrink:0;color:#0e7c8c}
+.dark .cv-note{border-color:#1f5663;background:#0d2a33;color:#d4f3f7}
+.dark .cv-note svg{color:#5fd4e0}
+.cv-note.is-shown{animation:cv-in 240ms cubic-bezier(.25,1,.5,1)}
+@keyframes cv-in{from{opacity:0;transform:translate(-50%,6px)}to{opacity:1;transform:translate(-50%,0)}}

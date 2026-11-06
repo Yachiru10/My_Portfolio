@@ -8,7 +8,6 @@
   <meta property="og:title" content="Renzo Mingan | Backend Developer">
   <meta property="og:description" content="Backend developer and aspiring full-stack developer. Node.js, Express, MySQL, Firebase and Google Cloud.">
   <meta property="og:image" content="/images/ecolink-admin-map.webp">
-  <!-- Load the saved theme before the page shows, so it does not flash -->
   <script>
     try { if (localStorage.getItem('theme') === 'light') document.documentElement.classList.remove('dark'); } catch (e) {}
   </script>
@@ -22,7 +21,7 @@
   <div class="glow-corner" aria-hidden="true"></div>
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-surface focus:px-4 focus:py-2">Skip to content</a>
 
-  <!-- ===== HEADER (same on every page) ===== -->
+  <!-- ===== HEADER  ===== -->
   <header class="sticky top-0 z-30 border-b border-line backdrop-blur-md" style="background: var(--nav)">
     <nav class="container-site flex items-center justify-between gap-4 py-4" aria-label="Main">
       <a href="/" class="font-display text-3xl font-bold tracking-tight text-accent">RENZO</a>
@@ -56,7 +55,6 @@
     <!-- ===== HERO ===== -->
     <section class="container-site flex flex-col items-center gap-7 pb-32 pt-24 text-center md:pt-36" aria-label="Introduction">
       <div class="flex flex-wrap justify-center gap-3.5">
-        <!-- TODO: change Yachiru10 to your real GitHub username -->
         <a href="https://github.com/Yachiru10" class="pill-link" target="_blank" rel="noopener">
           <svg class="h-[18px] w-[18px]" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
           GITHUB
@@ -69,16 +67,29 @@
 
       <h1 class="font-display text-[clamp(52px,9.6vw,140px)] font-bold leading-[0.92] tracking-[-0.035em]">RENZO MINGAN</h1>
 
-      <!-- main.js types these words one by one -->
+      <!-- types these words one by one -->
       <p class="min-h-[34px] font-display text-[clamp(18px,2vw,26px)] font-bold tracking-wide text-accent">
         <span data-typing="BACKEND DEVELOPER|ASPIRING FULL-STACK DEVELOPER">BACKEND DEVELOPER</span><span class="caret ml-1" aria-hidden="true">_</span>
       </p>
 
-      <!-- Put your resume PDF in the public folder with this exact name -->
+      <!-- Resume -->
+      <div class="cv-wrap">
+        <button type="button" class="btn-primary" data-cv-unavailable>
+          DOWNLOAD CV
+          <svg class="h-[18px] w-[18px]" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+        </button>
+        <p class="cv-note" role="status" hidden>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+          The CV isn't available for now.
+        </p>
+      </div>
+
+      <!-- Turn off the CV for now
       <a href="/Renzo_Mingan_CV.pdf" class="btn-primary mt-3" download>
         DOWNLOAD CV
         <svg class="h-[18px] w-[18px]" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
       </a>
+      -->
     </section>
 
     <!-- ===== STATS ===== -->
@@ -170,7 +181,7 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER (same on every page) ===== -->
+  <!-- ===== FOOTER  ===== -->
   <footer class="border-t border-line">
     <div class="container-site flex flex-wrap items-center justify-between gap-6 py-11">
       <div class="flex flex-col gap-1.5">

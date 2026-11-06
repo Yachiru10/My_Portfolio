@@ -75,3 +75,13 @@ if (typingEl && !reduceMotion) {
 document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
+
+document.querySelectorAll('[data-cv-unavailable]').forEach(function (btn) {
+  var note = btn.parentElement.querySelector('.cv-note'), timer;
+  btn.addEventListener('click', function () {
+    note.hidden = false;
+    note.classList.remove('is-shown'); void note.offsetWidth; note.classList.add('is-shown');
+    clearTimeout(timer);
+    timer = setTimeout(function () { note.hidden = true; }, 4000);
+  });
+});
